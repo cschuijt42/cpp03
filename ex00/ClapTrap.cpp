@@ -119,5 +119,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
 
 	std::cout << type                        << " " << this->name <<
 				 " has repaired itself for " << amount <<
-				 " hit points."              << std::endl;
+				 " hit points, it now has "  << this->hit_points <<
+				 " hit points." << std::endl;
 }

@@ -13,6 +13,7 @@ class ClapTrap {
 		~ClapTrap();
 
 		const std::string& getName( void ) const;
+		const std::string& getType( void ) const;
 		unsigned int getHitPoints( void ) const;
 		unsigned int getEnergyPoints( void ) const;
 		unsigned int getAttackDamage( void ) const;
