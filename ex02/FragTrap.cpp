@@ -38,7 +38,7 @@ FragTrap::~FragTrap() {
 
 void FragTrap::highFivesGuys( void ) {
 	std::cout << type << " " << this->getName() <<
-				 " wants to high five!" << std::endl;
+				 " wants to high five, guys (m/f/x)!" << std::endl;
 }
 
 void FragTrap::setFragTrapStats( void ) {
