@@ -1,5 +1,5 @@
-#ifndef FragTrap_H
-#define FragTrap_H
+#ifndef FRAGTRAP_H
+#define FRAGTRAP_H
 #include "ClapTrap.hpp"
 
 class FragTrap: public ClapTrap {
