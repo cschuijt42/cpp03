@@ -13,6 +13,9 @@ class ScavTrap: public ClapTrap {
 		~ScavTrap();
 
 		void guardGate( void );
+
+	private:
+		void setScavTrapStats( void );
 };
 
 #endif
