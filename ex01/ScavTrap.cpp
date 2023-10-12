@@ -11,7 +11,7 @@ ScavTrap::ScavTrap(const std::string& name) {
 	std::cout << "ScavTrap named constructor called: " << this->getName() << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& src) {
+ScavTrap::ScavTrap(const ScavTrap& src) : ClapTrap(src) {
 	*this = src;
 	std::cout << "ScavTrap copy constructor called: " << this->getName() << std::endl;
 }
