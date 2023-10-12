@@ -6,12 +6,11 @@ test
 *.a
 *.exe
 *.dSYM
-shell-experiments/*
 obj/*
 valgrind-out.txt
 misc/*
 readline.supp
-ex00/fixed
-ex01/fixed
-ex02/fixed
-ex03/bsp
+ex00/claptrap
+ex01/claptrap
+ex02/claptrap
+ex03/claptrap
