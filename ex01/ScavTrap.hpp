@@ -2,7 +2,7 @@
 #define SCAVTRAP_H
 #include "ClapTrap.hpp"
 
-class ScavTrap: virtual public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 	public:
 		ScavTrap( void );
 		ScavTrap(const std::string& name);
@@ -12,6 +12,7 @@ class ScavTrap: virtual public ClapTrap {
 
 		~ScavTrap();
 
+		void attack(const std::string& target);
 		void guardGate( void );
 
 	private:

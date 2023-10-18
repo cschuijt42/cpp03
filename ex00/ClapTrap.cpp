@@ -71,22 +71,22 @@ void ClapTrap::setAttackDamage(const unsigned int& amount) {
 // Class methods
 
 void ClapTrap::attack(const std::string& target) {
-	if (this->energy_points <= 0) {
-		std::cout << type << " " << this->name <<
+	if (this->getEnergyPoints() <= 0) {
+		std::cout << "ClapTrap " << this->getName() <<
 				" is out of energy and cannot attack." << std::endl;
 		return;
 	}
-	else if (this->hit_points <= 0) {
-		std::cout << type << " " << this->name <<
+	else if (this->getHitPoints() <= 0) {
+		std::cout << "ClapTrap " << this->getName() <<
 				" is dead and cannot attack." << std::endl;
 		return;
 	}
 
-	this->energy_points--;
+	this->setEnergyPoints(this->getEnergyPoints() - 1);
 
-	std::cout << type                 << " " << this->name <<
+	std::cout << "ClapTrap "          << this->getName() <<
 				 " attacks "          << target <<
-				 ", causing "         << this->attack_damage <<
+				 ", causing "         << this->getAttackDamage() <<
 				 " points of damage!" << std::endl;
 }
 
@@ -96,7 +96,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 	else
 		this->hit_points -= amount;
 
-	std::cout << type                             << " " << this->name <<
+	std::cout << "ClapTrap "                      << this->name <<
 				 " has taken "                    << amount <<
 				 " points of damage, it now has " << this->hit_points <<
 				 " hit points."                   << std::endl;
@@ -104,12 +104,12 @@ void ClapTrap::takeDamage(unsigned int amount) {
 
 void ClapTrap::beRepaired(unsigned int amount) {
 	if (this->energy_points == 0) {
-		std::cout << type << " " << this->name <<
+		std::cout << "ClapTrap " << this->name <<
 				" is out of energy and cannot repair." << std::endl;
 		return;
 	}
 	else if (this->hit_points == 0) {
-		std::cout << type << " " << this->name <<
+		std::cout << "ClapTrap " << this->name <<
 				" is dead and cannot repair." << std::endl;
 		return;
 	}
@@ -117,7 +117,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	this->energy_points--;
 	this->hit_points += amount;
 
-	std::cout << type                        << " " << this->name <<
+	std::cout << "ClapTrap "                 << this->name <<
 				 " has repaired itself for " << amount <<
 				 " hit points, it now has "  << this->hit_points <<
 				 " hit points." << std::endl;

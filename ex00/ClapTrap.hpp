@@ -27,9 +27,6 @@ class ClapTrap {
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-	protected:
-		std::string type = "ClapTrap";
-
 	private:
 		std::string	 name;
 		unsigned int hit_points    = 10;

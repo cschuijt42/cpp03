@@ -4,7 +4,6 @@
 // Constructors, destructors and assignment operators
 
 ScavTrap::ScavTrap() {
-	type = "ScavTrap";
 	this->setScavTrapStats();
 	std::cout << "ScavTrap default constructor called: " << this->getName() << std::endl;
 }
@@ -36,8 +35,28 @@ ScavTrap::~ScavTrap() {
 
 // Class member functions
 
+void ScavTrap::attack(const std::string& target) {
+	if (this->getEnergyPoints() <= 0) {
+		std::cout << "ScavTrap " << this->getName() <<
+				" is out of energy and cannot attack." << std::endl;
+		return;
+	}
+	else if (this->getHitPoints() <= 0) {
+		std::cout << "ScavTrap " << this->getName() <<
+				" is dead and cannot attack." << std::endl;
+		return;
+	}
+
+	this->setEnergyPoints(this->getEnergyPoints() - 1);
+
+	std::cout << "ScavTrap "          << this->getName() <<
+				 " attacks "          << target <<
+				 ", causing "         << this->getAttackDamage() <<
+				 " points of damage!" << std::endl;
+}
+
 void ScavTrap::guardGate( void ) {
-	std::cout << type << " " << this->getName() <<
+	std::cout << "ScavTrap " << this->getName() <<
 				 " is in Gate Keeper mode." << std::endl;
 }
 
