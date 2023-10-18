@@ -8,9 +8,9 @@ endif
 ifeq ($(UNAME_S), Darwin)
 	COMPIL_FLAGS	?= -Wall -Wextra -Werror -std=c++17
 else
-	COMPIL_FLAGS	?= -Wall -Wextra -Werror -std=c++17 -lstdc++
+	COMPIL_FLAGS	?= -Wall -Wextra -Werror -std=c++17
 endif
-INCLUDE_FLAGS		?=
+INCLUDE_FLAGS		?= -lstdc++
 
 SOURCEFILES	:=	main.cpp \
 				ClapTrap.cpp
@@ -31,7 +31,7 @@ $(NAME) : $(OBJS)
 
 $(OBJ_DIR)/%.o : %.cpp $(HEADERS) | $(OBJ_DIR)
 	@printf "$(COMP_BEFORE)$(notdir $<)$(COMP_AFTER)"
-	@$(CC) $(COMPIL_FLAGS) -o $@ -c $< $(INCLUDE_FLAGS)
+	@$(CC) $(COMPIL_FLAGS) -o $@ -c $<
 	@printf "$(COMP_DONE)"
 
 $(OBJ_DIR) :
