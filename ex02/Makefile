@@ -14,9 +14,11 @@ INCLUDE_FLAGS		?=
 
 SOURCEFILES	:=	main.cpp \
 				ClapTrap.cpp \
+				ScavTrap.cpp \
 				FragTrap.cpp
 
 HEADERS	:=	ClapTrap.hpp \
+			ScavTrap.hpp \
 			FragTrap.hpp
 
 OFILES	:=	$(SOURCEFILES:.cpp=.o)
