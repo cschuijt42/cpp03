@@ -1,5 +1,5 @@
-#ifndef FRAGTRAP_H
-#define FRAGTRAP_H
+#ifndef FragTrap_H
+#define FragTrap_H
 #include "ClapTrap.hpp"
 
 class FragTrap: virtual public ClapTrap {
@@ -13,9 +13,13 @@ class FragTrap: virtual public ClapTrap {
 		~FragTrap();
 
 		void highFivesGuys( void );
+		void attack(const std::string& target);
 
-	private:
-		void setFragTrapStats( void );
+	protected:
+		std::string  name;
+		unsigned int hit_points    = 100;
+		unsigned int energy_points = 100;
+		unsigned int attack_damage = 30;
 };
 
 #endif
