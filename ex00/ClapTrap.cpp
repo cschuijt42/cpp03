@@ -71,20 +71,20 @@ void ClapTrap::setAttackDamage(const unsigned int& amount) {
 // Class methods
 
 void ClapTrap::attack(const std::string& target) {
-	if (this->getEnergyPoints() <= 0) {
-		std::cout << "ClapTrap " << this->getName() <<
+	if (this->energy_points <= 0) {
+		std::cout << "ClapTrap " << this->name <<
 				" is out of energy and cannot attack." << std::endl;
 		return;
 	}
-	else if (this->getHitPoints() <= 0) {
-		std::cout << "ClapTrap " << this->getName() <<
+	else if (this->hit_points <= 0) {
+		std::cout << "ClapTrap " << this->name <<
 				" is dead and cannot attack." << std::endl;
 		return;
 	}
 
 	this->setEnergyPoints(this->getEnergyPoints() - 1);
 
-	std::cout << "ClapTrap "          << this->getName() <<
+	std::cout << "ClapTrap "          << this->name <<
 				 " attacks "          << target <<
 				 ", causing "         << this->getAttackDamage() <<
 				 " points of damage!" << std::endl;
@@ -109,7 +109,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		return;
 	}
 	else if (this->hit_points == 0) {
-		std::cout << "ClapTrap " << this->name <<
+		std::cout << "ClapTrap "              << this->name <<
 				" is dead and cannot repair." << std::endl;
 		return;
 	}
@@ -121,4 +121,11 @@ void ClapTrap::beRepaired(unsigned int amount) {
 				 " has repaired itself for " << amount <<
 				 " hit points, it now has "  << this->hit_points <<
 				 " hit points." << std::endl;
+}
+
+void ClapTrap::printStats( void ) const {
+	std::cout << "Stats for:    : " << this->getName()         << '\n' <<
+	             "Hit points    : " << this->getHitPoints()    << '\n' <<
+				 "Energy points : " << this->getEnergyPoints() << '\n' <<
+				 "Attack damage : " << this->getAttackDamage() << std::endl;
 }

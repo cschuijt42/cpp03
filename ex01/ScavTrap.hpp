@@ -14,9 +14,16 @@ class ScavTrap : virtual public ClapTrap {
 
 		void attack(const std::string& target);
 		void guardGate( void );
+		void attack(const std::string& target);
+
+	protected:
+		std::string  name;
+		unsigned int hit_points    = 100;
+		unsigned int energy_points = 50;
+		unsigned int attack_damage = 20;
 
 	private:
-		void setScavTrapStats( void );
+		void propagateStats( void );
 };
 
 #endif

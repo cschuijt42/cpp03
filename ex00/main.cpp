@@ -8,6 +8,8 @@ int main( void ) {
 
 	c = b;
 
+	a.printStats();
+
 	a.attack("Second");
 	b.takeDamage(4);
 	b.beRepaired(6);
@@ -18,6 +20,8 @@ int main( void ) {
 	}
 
 	a.beRepaired(5);
+
+	a.printStats();
 
 	c.takeDamage(10);
 	c.attack("Fourth");
