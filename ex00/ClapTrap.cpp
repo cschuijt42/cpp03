@@ -122,3 +122,10 @@ void ClapTrap::beRepaired(unsigned int amount) {
 				 " hit points, it now has "  << this->hit_points <<
 				 " hit points." << std::endl;
 }
+
+void ClapTrap::printStats( void ) const {
+	std::cout << "Stats for:    : " << this->getName()         << '\n' <<
+	             "Hit points    : " << this->getHitPoints()    << '\n' <<
+				 "Energy points : " << this->getEnergyPoints() << '\n' <<
+				 "Attack damage : " << this->getAttackDamage() << std::endl;
+}

@@ -27,11 +27,13 @@ class ClapTrap {
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
+		void printStats( void ) const;
+
 	private:
 		std::string	 name;
 		unsigned int hit_points    = 10;
 		unsigned int energy_points = 10;
-		unsigned int attack_damage = 10;
+		unsigned int attack_damage = 0;
 };
 
 #endif
