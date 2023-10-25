@@ -8,6 +8,20 @@ int main( void ) {
 
 	c = b;
 
+	ClapTrap clap("ClapTrap");
+	ScavTrap scav("ScavTrap");
+	FragTrap frag("FragTrap");
+
+	clap.printStats();
+	scav.printStats();
+	frag.printStats();
+
+	a.printStats();
+	b.printStats();
+	c.printStats();
+
+
+
 	a.attack("Second");
 	b.takeDamage(4);
 	b.beRepaired(6);

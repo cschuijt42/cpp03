@@ -23,7 +23,8 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		unsigned int attack_damage;
 
 	private:
-		void inherit_values( void );
+		void inheritStats( void );
+		void propagateStats( void );
 		std::string	 name;
 };
 
