@@ -21,10 +21,10 @@ ScavTrap::ScavTrap(const ScavTrap& src) : ClapTrap(src) {
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& src) {
-	this->name          = src.name;
-	this->attack_damage = src.attack_damage;
-	this->energy_points = src.energy_points;
-	this->hit_points    = src.hit_points;
+	this->name          = src.getName();
+	this->attack_damage = src.getAttackDamage();
+	this->energy_points = src.getEnergyPoints();
+	this->hit_points    = src.getHitPoints();
 	this->propagateStats();
 	std::cout << "ScavTrap copy assignment operator called: " << this->name << std::endl;
 
@@ -38,16 +38,8 @@ ScavTrap::~ScavTrap() {
 // Class member functions
 
 void ScavTrap::attack(const std::string& target) {
-	if (this->getEnergyPoints() <= 0) {
-		std::cout << "ScavTrap " << this->getName() <<
-				" is out of energy and cannot attack." << std::endl;
+	if (!this->canAct("ScavTrap", "attack"))
 		return;
-	}
-	else if (this->getHitPoints() <= 0) {
-		std::cout << "ScavTrap " << this->getName() <<
-				" is dead and cannot attack." << std::endl;
-		return;
-	}
 
 	this->setEnergyPoints(this->getEnergyPoints() - 1);
 
@@ -58,28 +50,11 @@ void ScavTrap::attack(const std::string& target) {
 }
 
 void ScavTrap::guardGate( void ) {
+	if (!this->canAct("ScavTrap", "enter Gate Keeper mode"))
+		return;
+
 	std::cout << "ScavTrap "                << this->name <<
 				 " is in Gate Keeper mode." << std::endl;
-}
-
-void ScavTrap::attack(const std::string& target) {
-	if (this->getEnergyPoints() <= 0) {
-		std::cout << "ScavTrap " << this->name <<
-				" is out of energy and cannot attack." << std::endl;
-		return;
-	}
-	else if (this->getHitPoints() <= 0) {
-		std::cout << "ScavTrap " << this->name <<
-				" is dead and cannot attack." << std::endl;
-		return;
-	}
-
-	this->setEnergyPoints(this->getEnergyPoints() - 1);
-
-	std::cout << "ScavTrap "          << this->name <<
-				 " attacks "          << target <<
-				 ", causing "         << this->getAttackDamage() <<
-				 " points of damage!" << std::endl;
 }
 
 void ScavTrap::propagateStats( void ) {

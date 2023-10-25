@@ -29,6 +29,9 @@ class ClapTrap {
 
 		void printStats( void ) const;
 
+	protected:
+		bool canAct(const std::string& type, const std::string& action) const;
+
 	private:
 		std::string	 name;
 		unsigned int hit_points    = 10;

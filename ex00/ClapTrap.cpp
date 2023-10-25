@@ -71,16 +71,8 @@ void ClapTrap::setAttackDamage(const unsigned int& amount) {
 // Class methods
 
 void ClapTrap::attack(const std::string& target) {
-	if (this->energy_points <= 0) {
-		std::cout << "ClapTrap " << this->name <<
-				" is out of energy and cannot attack." << std::endl;
+	if (!this->canAct("ClapTrap", "attack"))
 		return;
-	}
-	else if (this->hit_points <= 0) {
-		std::cout << "ClapTrap " << this->name <<
-				" is dead and cannot attack." << std::endl;
-		return;
-	}
 
 	this->setEnergyPoints(this->getEnergyPoints() - 1);
 
@@ -103,16 +95,8 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	if (this->energy_points == 0) {
-		std::cout << "ClapTrap " << this->name <<
-				" is out of energy and cannot repair." << std::endl;
+	if (!this->canAct("ClapTrap", "repair"))
 		return;
-	}
-	else if (this->hit_points == 0) {
-		std::cout << "ClapTrap "              << this->name <<
-				" is dead and cannot repair." << std::endl;
-		return;
-	}
 
 	this->energy_points--;
 	this->hit_points += amount;
@@ -128,4 +112,18 @@ void ClapTrap::printStats( void ) const {
 	             "Hit points    : " << this->getHitPoints()    << '\n' <<
 				 "Energy points : " << this->getEnergyPoints() << '\n' <<
 				 "Attack damage : " << this->getAttackDamage() << std::endl;
+}
+
+bool ClapTrap::canAct(const std::string& type, const std::string& action) const {
+	if (this->getEnergyPoints() == 0) {
+		std::cout << type << " " << this->getName() <<
+				" is out of energy and cannot " << action << "." << std::endl;
+		return false;
+	}
+	else if (this->getHitPoints() == 0) {
+		std::cout << type << " " << this->getName() <<
+				" is dead and cannot " << action << "." << std::endl;
+		return false;
+	}
+	return true;
 }

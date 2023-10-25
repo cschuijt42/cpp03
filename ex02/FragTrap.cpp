@@ -21,10 +21,10 @@ FragTrap::FragTrap(const FragTrap& src) : ClapTrap(src) {
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& src) {
-	this->name          = src.name;
-	this->attack_damage = src.attack_damage;
-	this->energy_points = src.energy_points;
-	this->hit_points    = src.hit_points;
+	this->name          = src.getName();
+	this->attack_damage = src.getAttackDamage();
+	this->energy_points = src.getEnergyPoints();
+	this->hit_points    = src.getHitPoints();
 	this->propagateStats();
 	std::cout << "FragTrap copy assignment operator called: " << this->name << std::endl;
 
@@ -38,16 +38,8 @@ FragTrap::~FragTrap() {
 // Class member functions
 
 void FragTrap::attack(const std::string& target) {
-	if (this->getEnergyPoints() <= 0) {
-		std::cout << "FragTrap " << this->getName() <<
-				" is out of energy and cannot attack." << std::endl;
+	if (!this->canAct("FragTrap", "attack"))
 		return;
-	}
-	else if (this->getHitPoints() <= 0) {
-		std::cout << "FragTrap " << this->getName() <<
-				" is dead and cannot attack." << std::endl;
-		return;
-	}
 
 	this->setEnergyPoints(this->getEnergyPoints() - 1);
 
@@ -58,28 +50,11 @@ void FragTrap::attack(const std::string& target) {
 }
 
 void FragTrap::highFivesGuys( void ) {
+	if (!this->canAct("FragTrap", "high five"))
+		return;
+
 	std::cout << "FragTrap " << this->getName() <<
 				 " wants to high five, guys (m/f/x)!" << std::endl;
-}
-
-void FragTrap::attack(const std::string& target) {
-	if (this->getEnergyPoints() <= 0) {
-		std::cout << "FragTrap " << this->name <<
-				" is out of energy and cannot attack." << std::endl;
-		return;
-	}
-	else if (this->getHitPoints() <= 0) {
-		std::cout << "FragTrap " << this->name <<
-				" is dead and cannot attack." << std::endl;
-		return;
-	}
-
-	this->setEnergyPoints(this->getEnergyPoints() - 1);
-
-	std::cout << "FragTrap "          << this->name <<
-				 " attacks "          << target <<
-				 ", causing "         << this->getAttackDamage() <<
-				 " points of damage!" << std::endl;
 }
 
 void FragTrap::propagateStats( void ) {
